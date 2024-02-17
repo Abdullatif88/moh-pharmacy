@@ -9,7 +9,7 @@ const tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 
 
 var geojsonMarkerOptions = {
-    color: '#d672a9',
+    color: 'navy',
     opacity: 0.5,
     fillOpacity: 1,
     weight:0.5,
