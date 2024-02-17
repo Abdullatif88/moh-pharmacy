@@ -16,7 +16,25 @@ const tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 
 
 
-
+var chor = L.choropleth(data, {
+	valueProperty: 'tot_tot', // which property in the features to use
+	scale: "PuRd", // chroma.js scale - include as many as you like
+	steps: 4, // number of breaks or steps in range
+	mode: 'k', // q for quantile, e for equidistant, k for k-means
+	style: {
+		color: 'black', // border color
+		weight: 0.5,
+		fillOpacity: 0.8
+	},
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup('إجمالي السكان ' +
+        '<br>' +  feature.properties.tot_tot 
+        
+        // + '<br>' +
+        //     feature.properties.GOV_NO.toLocaleString() + ' incidents'
+            )
+      }
+}).addTo(map);
 var chor1 = L.choropleth(data, {
 	valueProperty: 'tot_ku', // which property in the features to use
 	scale: "PuRd", // chroma.js scale - include as many as you like
@@ -118,6 +136,7 @@ var chor5 = L.choropleth(data, {
 });
 
 var choropleths = {
+    "إجمالي السكان": chor,
     "إجمالي السكان الكويتيون": chor1,
     "إجمالي السكان غير الكويتيين": chor2,
     "الكثافة السكانية / كم2": chor3,
