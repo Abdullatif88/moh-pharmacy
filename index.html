@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<base target="_top">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>MOH Pharmacy</title>
+	
+	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="Leaflet.markercluster-1.4.1\Leaflet.markercluster-1.4.1\dist\MarkerCluster.css"/>
+	<link rel="stylesheet" href="Leaflet.markercluster-1.4.1\Leaflet.markercluster-1.4.1\dist\MarkerCluster.Default.css"/>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+	<script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script>
+	<script src='https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js'></script>
+	<script src="nbhoods3.js"></script>
+	<script src="pharmacy.js"></script>
+	<script src="Leaflet.markercluster-1.4.1\Leaflet.markercluster-1.4.1\dist\leaflet.markercluster-src.js"></script>
+	<script src="Leaflet.markercluster-1.4.1\Leaflet.markercluster-1.4.1\src\MarkerCluster.js"></script>
+	<script src="leaflet-choropleth-gh-pages\leaflet-choropleth-gh-pages\dist\choropleth.js"></script>
+	<!-- <script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script> -->
+	<!-- <script>
+		var bbox = turf.bbox(features);
+	</script> -->
+
+	<!-- <style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+		#map { height: 680px;
+			   width: 1200px;
+		}
+		.leaflet-container {
+			height: 400px;
+			width: 600px;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	</style> -->
+
+</head>
+<body>
+    <div id= "main-p">  
+        <h1>الانتشار الجغرافي للصيدليات في الكويت</h1>
+		<p id="main-p-text"> الخريطة أدناه تعرض التوزيع الجغرافي للصيدليات في الكويت،
+			 ومواقع الصيدليات تم جمعها من وزارة الصحة مع التحقق والمراجعة عن طريق الهيئة العامة للمعلومات المدنية.
+			 <br>كما يمكن أن يتم تصفية الصيدليات المعروضة بناءً على التجمع الرئيسي لها<br>
+		</p>
+    </div>
+    <div>
+        <select id="category-filter">
+            <option value="">الكل</option>
+            <option value="royal">رويال</option>
+            <option value="pharmazone">فارمازون</option>
+        </select>
+    </div>
+	<div id="map">
+        <script src= "pharmacy_location.js" type="module"> </script>
+    </div>
+
+	<div id= "main-p">  
+        <h1>
+			البيانات الديموغرافية لمناطق الكويت
+		</h1>
+		<p id="main-p-text">
+			 الخرائط أدناه تعرض تعداد السكان والكثافة السكانية، إضافة لعدد الصيدليات في كل منطقة وكثافة الصيدلية نسبة للسكان.
+			 تم جمع البيانات من الهيئة العامة للمعلومات المدنية لإحصاء عام 2023.
+			 <br>كما يمكن أن يتم عرض توزيع الصيدليات إضافة لباقي الخرائط الإحصائية<br>
+		</p>
+    </div>
+	<div id="map2">
+        <script src= "nbhoods_stats.js" type="module"> </script>
+		
+    </div>
+	<div id= "main-p">  
+        <h1>
+			التكتل المكاني للصيدليات في الكويت
+		</h1>
+		<p id="main-p-text">
+			 الخريطة أدناه تعرض التكتل أو التجمع المكاني للصيدليات بحسب موقعها الجغرافي.
+			 عند تكبير الخريطة، عدد التكتلات يقل حتى نصل لمستوى الصيدلية الواحدة
+			 <br>إذا قمنا بوضع المؤشر على أي تجمع، فإن الخريطة تعرض الحدود المكانية التقريبية لهذا التجمع من الصيدليات<br>
+		</p>
+    </div>
+	<div id="map3">
+        <script src= "pharmacy_cluster.js" type="module"> </script>
+		
+    </div>
+	<div id= "main-p">  
+        <h1>
+			حيز 200م حول الصيدليات
+		</h1>
+		<p id="main-p-text">
+			 الخريطة أدناه تعرض نطاق 200م من مركز كل صيدلية، حسب قرار وزارة الصحة
+			 <br>يمكنكم إظهار أو إخفاء نطاق التغطية حسب رغبتكم<br>
+		</p>
+    </div>
+	<div id="map4">
+        <script src= "pharmacy_buffer.js" type="module"> </script>
+		
+    </div>
+    <!-- <section>
+        <div id= "charts">
+            <script src="charts.js"></script>
+        </div>
+    </section> -->
+    
+</body>
+
+</html>	
+
+	<!-- <script src="turf.min.js" charset="utf-8"></script> -->
+	<!-- <script src='https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js'></script> -->
+	<!-- <script>
+	
+		// const map = L.map('map').setView([29.35, 48], 5);
+	
+		// const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		// 	maxZoom: 19,
+		// 	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+		// }).addTo(map);
+
+		// var marker1 = turf.point([47.95,29.35]);
+		// var marker2 = turf.point([-65.80,-40.15]);
+
+		// var marker1 = turf.point([48,29]);
+		// var marker2 = turf.point([-65.80,-40.15]);
+
+		
+
+		// function onMapClick (e) {
+		// 	let marker = L.marker(e.latlng, {draggable:'true'});
+		// 	marker.addTo(map);
+		// }
+		// marker = map.on('click', onMapClick);
+		
+		// var circle = L.circle([29.35, 47.95], {
+		// 	color: 'black',
+		// 	fillColor: 'gray',
+		// 	fillOpacity: 0.5,
+		// 	radius: 1000
+		// }).addTo(map);
+
+		// marker1.bindPopup("صيدلية القطان")
+		// marker1.addTo(map);
+		// L.geoJson(marker1, {draggable:'true'}).addTo(map);
+		// L.geoJson(marker2).addTo(map);
+
+		// function removeGC() {
+		// 	map.removeLayer(greatCircle)
+		// }
+
+
+		// var greatCircle = turf.greatCircle(marker1,marker2)
+		//  L.geoJson(greatCircle).addTo(map);
+
+
+		// // create the marker
+		// marker = L.marker(map.getCenter(),{
+		// 		draggable: true,
+		// 		autoPan: true 
+		// 	}).addTo(map);
+
+		//  //remove old buffers (used when marker is dragged)
+		// function removeBuff() {
+		// 	map.removeLayer(buff);
+		// };
+
+		//  //create buffer (used when the marker is dragged)
+ 		// function updateBuffer() {
+		// 	//Make the marker a feature
+		// 	var pointMarker = marker.toGeoJSON();
+		// 	//buffer the marker geoJSON feature
+		// 	buffered = turf.buffer(pointMarker, 500, {unites: 'kilometers'});
+		// 	//add buffer to the map. Note: no "var" before "buff" makes it a global variable and usable within the removeBuff() function. 
+		// 	buff = L.geoJson(buffered).addTo(map);
+		// 	// buff.addTo(map);
+		// 	// console.log(buffered);
+		// };
+
+
+		// marker.on('drag', function () {
+		// 	removeBuff(), updateBuffer()
+		// });
+		// updateBuffer();
+
+		// var geojsonFeature = {
+		// 	"type": "Feature",
+		// 	"properties": {
+		// 		"name": "Coors Field",
+		// 		"amenity": "Baseball Stadium",
+		// 		"popupContent": "This is where the Rockies play!"
+		// 	},
+		// 	"geometry": {
+		// 		"type": "Point",
+		// 		"coordinates": [-104.99404, 39.75621]
+		// 	}
+		// };
+
+		// L.geoJSON(geojsonFeature).addTo(map);
+
+		// var states = [{
+		// 	"type": "Feature",
+		// 	"properties": {"party": "Republican"},
+		// 	"geometry": {
+		// 		"type": "Polygon",
+		// 		"coordinates": [[
+		// 			[-104.05, 48.99],
+		// 			[-97.22,  48.98],
+		// 			[-96.58,  45.94],
+		// 			[-104.03, 45.94],
+		// 			[-104.05, 48.99]
+		// 		]]
+		// 	}
+		// }, {
+		// 	"type": "Feature",
+		// 	"properties": {"party": "Democrat"},
+		// 	"geometry": {
+		// 		"type": "Polygon",
+		// 		"coordinates": [[
+		// 			[-109.05, 41.00],
+		// 			[-102.06, 40.99],
+		// 			[-102.03, 36.99],
+		// 			[-109.04, 36.99],
+		// 			[-109.05, 41.00]
+		// 		]]
+		// 	}
+		// }];
+
+		// L.geoJSON(states, {
+		// 	style: function(feature) {
+		// 		switch (feature.properties.party) {
+		// 			case 'Republican': return {color: "#ff0000"};
+		// 			case 'Democrat':   return {color: "#0000ff"};
+		// 		}
+		// 	}
+		// }).addTo(map);
+
+		// var usStates = L.layerGroup(states);
+
+		// var overlyStates = {'States': usStates};
+
+		// var layerControl = L.control.layers(overlyStates).addTo(map);
+		// // var buff = turf.buffer(marker.toGeoJSON(),10, {unites: 'kilometers'})
+		
+		// // L.geoJson(buff).addTo(map);
+
+	</script>
+	 -->
+	
+	
+	
+	
+

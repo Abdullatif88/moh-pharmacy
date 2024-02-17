@@ -1,0 +1,49 @@
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+
+
+
+html, body {
+    height: 100%;
+    margin-left: 5%;
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#map, #map2, #map3, #map4 { 
+    height: 680px;
+    width: 940px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.leaflet-container {
+    height: 400px;
+    width: 600px;
+    max-width: 100%;
+    max-height: 100%;
+}
+#main-p {
+    font-family: 'Droid Arabic Kufi', serif;
+    width: 940px;
+    direction: rtl;
+    text-align: center;
+    
+}
+
+h1{
+    font-size: 25px;
+}
+
+#main-p-text {
+    font-family: 'Droid Arabic Kufi', serif;
+    border-bottom: 2px solid rgb(88, 77, 109);
+    padding-bottom: 10px;
+}
+
+#category-filter {
+    margin-bottom: 10px;
+    margin-left: 50%;
+    font-size: 12pt;
+    background-color: rgb(240, 240, 240);
+    border-style: hidden;
+    text-align: center;
+}
