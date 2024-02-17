@@ -2,9 +2,9 @@ import {csv} from "https://cdn.skypack.dev/d3-fetch@3";
 
 const map = L.map('map').setView([29.25, 48], 9);
 
-const tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+//const tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+//    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+//}).addTo(map);
 
 let circleGroup = L.layerGroup([]).addTo(map);
 
