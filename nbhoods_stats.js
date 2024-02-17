@@ -35,6 +35,7 @@ var chor = L.choropleth(data, {
             )
       }
 }).addTo(map);
+
 var chor1 = L.choropleth(data, {
 	valueProperty: 'tot_ku', // which property in the features to use
 	scale: "PuRd", // chroma.js scale - include as many as you like
@@ -53,7 +54,7 @@ var chor1 = L.choropleth(data, {
         //     feature.properties.GOV_NO.toLocaleString() + ' incidents'
             )
       }
-}).addTo(map);
+});
 
 var chor2 = L.choropleth(data, {
 	valueProperty: 'tot_n_ku', // which property in the features to use
