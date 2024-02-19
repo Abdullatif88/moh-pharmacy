@@ -15,17 +15,16 @@ csv("pharmacy.csv").then((data) => {
     renderCircle(data);  
 });
 
-
 // Drawing the pharmacies in circles
 const renderCircle = function(data) {
     circleGroup.clearLayers();
 
     for (const d of data) {
         var circle = L.circle([d.y,d.x], {
-            color: 'red',
+            color: 'black',
             opacity: 0.75,
             fillOpacity: 0.25,
-            radius: 5
+            radius: 10
     })//.addTo(map);
 
         circle.bindTooltip(d.name);
@@ -46,12 +45,12 @@ document.getElementById('category-filter').addEventListener('change', function(e
     for (const d of data) {
         if (d.category === event.target.value) {
             filteredData.push(d);
-            //console.log(filteredData);
+//            console.log(filteredData);
         }
     }
     renderCircle(filteredData);
 
     
-    //console.log(filteredData);
+    console.log(filteredData);
 });
 ////////////////////////////////////////////////////////

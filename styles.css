@@ -14,7 +14,7 @@ html, body {
     width: 940px;
     margin-top: 25px;
     margin-bottom: 25px;
-        text-align: center;
+    text-align: right;
 }
 .leaflet-container {
     height: 400px;
